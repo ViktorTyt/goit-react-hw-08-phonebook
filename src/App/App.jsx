@@ -1,4 +1,4 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
@@ -6,56 +6,53 @@ import { ContactList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 
 import { Container, MainTitle, SectionTitle, Message } from 'App/App.styled';
+import { useState, useEffect } from 'react';
 
-export class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+export const App = () => {
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) ?? []
+  );
+  const [filter, setFilter] = useState('');
+  console.log(contacts);
+  // componentDidMount() {
+  //   const saved = JSON.parse(localStorage.getItem('contacts'));
 
-  componentDidMount() {
-    const saved = JSON.parse(localStorage.getItem('contacts'));
+  //   if (saved) {
+  //     this.setState({ contacts: saved });
+  //   }
+  // }
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
 
-    if (saved) {
-      this.setState({ contacts: saved });
-    }
-  }
+    return () => {
+      console.log('Hello');
+    };
+  }, [contacts]);
 
-  componentDidUpdate(_, prevState) {
-    const { contacts } = this.state;
+  // componentDidUpdate(_, prevState) {
+  //   const { contacts } = this.state;
 
-    if (contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
-  }
+  //   if (contacts !== prevState.contacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(contacts));
+  //   }
+  // }
 
-  handleFormSubmit = data => {
-    const { contacts } = this.state;
-    const { name, number } = data;
+  const handleFormSubmit = (name, number) => {
     const normalizedName = name.toLowerCase();
 
     if (contacts.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
-      this.setState(prev => {
-        return {
-          contacts: [
-            ...prev.contacts,
-            { id: nanoid(), name: name, number: number },
-          ],
-        };
-      });
+      setContacts(prevState => [
+        ...prevState,
+        ...[{ id: nanoid(), name: name.trim(), number: number }],
+      ]);
     }
   };
 
-  handleFilterInputChange = filter => {
-    this.setState({
-      filter,
-    });
-  };
+  const handleFilterInputChange = filter => setFilter(filter);
 
-  showContact = () => {
-    const { contacts, filter } = this.state;
+  const showContact = () => {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
@@ -63,39 +60,28 @@ export class App extends Component {
     );
   };
 
-  handleDeleteItem = id => {
-    const { contacts } = this.state;
-
-    this.setState({
-      contacts: contacts.filter(contact => contact.id !== id),
-    });
+  const handleDeleteItem = id => {
+    setContacts(contacts.filter(contact => contact.id !== id));
   };
 
-  render() {
-    const { filter, contacts } = this.state;
-
-    return (
-      <Container>
-        <MainTitle>Phonebook</MainTitle>
-        <ContactForm onSubmit={this.handleFormSubmit} />
-        <SectionTitle>Contacts</SectionTitle>
-        {contacts.length > 1 && (
-          <Filter
-            filter={filter}
-            onFilterChange={this.handleFilterInputChange}
-          />
-        )}
-        {contacts.length > 0 ? (
-          <ContactList
-            contactsState={contacts}
-            filter={filter}
-            getFiltred={this.showContact}
-            deleteItem={this.handleDeleteItem}
-          />
-        ) : (
-          <Message>Your Phonebook is empty</Message>
-        )}
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <MainTitle>Phonebook</MainTitle>
+      <ContactForm onSubmit={handleFormSubmit} />
+      <SectionTitle>Contacts</SectionTitle>
+      {contacts.length > 1 && (
+        <Filter filter={filter} onFilterChange={handleFilterInputChange} />
+      )}
+      {contacts.length > 0 ? (
+        <ContactList
+          contactsState={contacts}
+          filter={filter}
+          getFiltred={showContact}
+          deleteItem={handleDeleteItem}
+        />
+      ) : (
+        <Message>Your Phonebook is empty</Message>
+      )}
+    </Container>
+  );
+};
