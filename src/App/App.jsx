@@ -1,10 +1,7 @@
-// import { Component } from 'react';
 import { nanoid } from 'nanoid';
-
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
-
 import { Container, MainTitle, SectionTitle, Message } from 'App/App.styled';
 import { useState, useEffect } from 'react';
 
@@ -13,29 +10,10 @@ export const App = () => {
     () => JSON.parse(localStorage.getItem('contacts')) ?? []
   );
   const [filter, setFilter] = useState('');
-  console.log(contacts);
-  // componentDidMount() {
-  //   const saved = JSON.parse(localStorage.getItem('contacts'));
 
-  //   if (saved) {
-  //     this.setState({ contacts: saved });
-  //   }
-  // }
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-
-    return () => {
-      console.log('Hello');
-    };
   }, [contacts]);
-
-  // componentDidUpdate(_, prevState) {
-  //   const { contacts } = this.state;
-
-  //   if (contacts !== prevState.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(contacts));
-  //   }
-  // }
 
   const handleFormSubmit = (name, number) => {
     const normalizedName = name.toLowerCase();
