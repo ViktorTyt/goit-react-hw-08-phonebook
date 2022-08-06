@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const addItem = createAction('contacts/addItem');
-const deleteItem = createAction('contacts/deleteItem');
-const filterItem = createAction('contacts/filterItem');
-
+const addItem = createAction('items/addItem');
+const deleteItem = createAction('items/deleteItem');
+const filterItem = createAction('filter/filterItem');
+console.log(addItem.type);
 export { addItem, deleteItem, filterItem };
