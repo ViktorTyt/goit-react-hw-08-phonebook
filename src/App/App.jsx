@@ -11,19 +11,9 @@ export const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.items);
   const filter = useSelector(state => state.filter);
-  console.log(contacts);
-  console.log(filter);
-  // Прибираємо локал-сторейдж
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  // );
-
-  // Рефакторинг фільтру на Редакс
-  // const [filter, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-    // Рефакторинг на Редакс
   }, [contacts]);
 
   const handleFormSubmit = (name, number) => {
@@ -32,18 +22,12 @@ export const App = () => {
     if (contacts.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
-      // setContacts(prevState => [
-      //   ...prevState,
-      //   ...[{ id: nanoid(), name: name.trim(), number: number }],
-      // ]);
       dispatch(addItem({ id: nanoid(), name: name.trim(), number: number }));
     }
   };
 
-  // const handleFilterInputChange = filter => setFilter(filter);
   const handleFilterInputChange = filter => dispatch(filterItem(filter));
   const showContact = () => {
-    // Рефакторинг на Редакс
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
@@ -52,10 +36,8 @@ export const App = () => {
   };
 
   const handleDeleteItem = id => {
-    // Рефакторинг на Редакс
     dispatch(deleteItem(id));
-    // setFilter('');
-    // setContacts(contacts.filter(contact => contact.id !== id));
+    dispatch(filterItem(''));
   };
 
   return (
