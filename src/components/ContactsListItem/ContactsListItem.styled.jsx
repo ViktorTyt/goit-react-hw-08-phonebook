@@ -21,15 +21,17 @@ export const DeleteButton = styled.button`
   font-size: 12px;
   font-weight: 500;
   text-transform: lowercase;
-  border: 1px solid ${theme.colors.dark};
-  transition: border border-color ${theme.animation.cubicBezier};
+  border: 2px solid ${theme.colors.dark};
+  transition: border border-color ${theme.animation.cubicBezierV2};
 
   :hover {
+    color: ${theme.colors.white};
+
+    background-color: ${theme.colors.darkOpange};
     border: 2px solid ${theme.colors.darkOpange};
   }
 
   :active {
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.darkOpange};
+    border: 2px solid ${theme.colors.darkOpange};
   }
 `;
