@@ -4,7 +4,7 @@ import { ContactItem, DeleteButton } from './ContactsListItem.styled';
 export const ContactListItem = ({ id, name, number, deleteItem }) => {
   return (
     <ContactItem>
-      • {name}: {number}
+      <span>•</span> {name} <br /> tel: {number}
       <DeleteButton id={id} type="button" onClick={() => deleteItem(id)}>
         Delete
       </DeleteButton>
