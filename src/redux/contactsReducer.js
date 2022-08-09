@@ -1,17 +1,7 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import { addItem, deleteItem, filterItem } from './contactsActions';
 
-const getLocalStorage = JSON.parse(localStorage.getItem('contacts')) ?? [];
-const initialState = {
-  contacts: {
-    items: getLocalStorage,
-    filter: '',
-  },
-};
-
-console.log(initialState.contacts.items);
-
-const myContactsReducer = createReducer(initialState.contacts.items, {
+const myContactsReducer = createReducer([], {
   [addItem]: (state, action) => {
     state.push(action.payload);
   },
@@ -20,10 +10,15 @@ const myContactsReducer = createReducer(initialState.contacts.items, {
   },
 });
 
-const myFilterReducer = createReducer(initialState.contacts.filter, {
+const myFilterReducer = createReducer('', {
   [filterItem]: (state, action) => {
     return (state = action.payload);
   },
 });
 
-export { myContactsReducer, myFilterReducer };
+const rootReducer = combineReducers({
+  items: myContactsReducer,
+  filter: myFilterReducer,
+});
+
+export { rootReducer };

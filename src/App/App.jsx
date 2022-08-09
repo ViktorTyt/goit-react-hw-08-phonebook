@@ -1,20 +1,15 @@
 import { nanoid } from 'nanoid';
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { ContactList } from 'components/ContactsList/ContactsList';
+import { ContactForm } from 'components/ContactForm';
+import { ContactList } from 'components/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 import { Container, MainTitle, SectionTitle, Message } from 'App/App.styled';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, deleteItem, filterItem } from 'redux/contactsActions';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.items);
-  const filter = useSelector(state => state.filter);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
 
   const handleFormSubmit = (name, number) => {
     const normalizedName = name.toLowerCase();
