@@ -13,4 +13,10 @@ export const Title = styled.h2`
   color: ${theme.colors.dark};
 `;
 
+export const Message = styled.p`
+  font-size: ${theme.fontSizes.medium};
+  font-weight: 500;
+  margin-bottom: 12px;
+`;
+
 export const List = styled.ul``;

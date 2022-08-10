@@ -1,41 +1,24 @@
-import PropTypes from 'prop-types';
-import { Container, List } from './ContactsList.styled';
+import { Container, List, Message } from './ContactsList.styled';
 import { ContactListItem } from 'components/ContactsListItem';
+import { useSelector } from 'react-redux';
+import { useGetContactsList } from 'hooks/useGetContactsList';
 
-export const ContactList = ({
-  filter,
-  contactsState,
-  getFiltred,
-  deleteItem,
-}) => {
-  const contacts = filter ? getFiltred() : contactsState;
+export const ContactList = () => {
+  const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
+  const contactsList = useGetContactsList(contacts, filter);
 
-  return (
+  return contactsList.length > 0 ? (
     <Container>
       <List>
-        {contacts.map(({ id, name, number }) => (
-          <ContactListItem
-            key={id}
-            id={id}
-            name={name}
-            number={number}
-            deleteItem={deleteItem}
-          />
+        {contactsList.map(({ id, name, number }) => (
+          <ContactListItem key={id} id={id} name={name} number={number} />
         ))}
       </List>
     </Container>
+  ) : filter ? (
+    <Message> {'No contact found'}</Message>
+  ) : (
+    <Message>{'Your Phonebook is empty'}</Message>
   );
-};
-
-ContactList.propTypes = {
-  filter: PropTypes.string.isRequired,
-  contactsState: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  getFiltred: PropTypes.func.isRequired,
-  deleteItem: PropTypes.func.isRequired,
 };
