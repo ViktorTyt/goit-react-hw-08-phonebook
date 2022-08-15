@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { rootReducer } from './contactsReducer';
+import counterSlice from './contactsReducer';
 
 const persistConfig = {
   key: 'items',
@@ -18,20 +18,12 @@ const persistConfig = {
   whitelist: ['items'],
 };
 
-const persistedMyContactsReducer = persistReducer(persistConfig, rootReducer);
-
-const preloadedState = {
-  contacts: {
-    items: [],
-    filter: '',
-  },
-};
+const persistedMyContactsReducer = persistReducer(persistConfig, counterSlice);
 
 const store = configureStore({
   reducer: {
     contacts: persistedMyContactsReducer,
   },
-  preloadedState,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

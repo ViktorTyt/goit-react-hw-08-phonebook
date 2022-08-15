@@ -9,7 +9,7 @@ import {
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from 'redux/contactsActions';
+import { addItem } from 'redux/contactsReducer';
 
 export const ContactsForm = () => {
   const [name, setName] = useState('');
