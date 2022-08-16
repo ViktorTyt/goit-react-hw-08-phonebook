@@ -10,6 +10,10 @@ import {
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { addItem } from 'redux/contactsReducer';
+import {
+  useGetContactsQuery,
+  useAddContactMutation,
+} from 'redux/contactsSlice';
 
 export const ContactsForm = () => {
   const [name, setName] = useState('');
@@ -17,15 +21,18 @@ export const ContactsForm = () => {
   // const dispatch = useDispatch();
   // const contacts = useSelector(state => state.contacts.items);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // const normalizedName = name.trim().toLowerCase();
+  const { data } = useGetContactsQuery();
+  const [addItem] = useAddContactMutation();
 
-    // if (contacts.find(({ name }) => name.toLowerCase() === normalizedName)) {
-    //   alert(`${name} is already in contacts`);
-    // } else {
-    //   dispatch(addItem({ id: nanoid(), name: name.trim(), number: number }));
-    // }
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const normalizedName = name.trim().toLowerCase();
+
+    if (data.find(({ name }) => name.toLowerCase() === normalizedName)) {
+      alert(`${name} is already in contacts`);
+    } else {
+      await addItem({ name: name.trim(), phone: number });
+    }
 
     reset();
   };

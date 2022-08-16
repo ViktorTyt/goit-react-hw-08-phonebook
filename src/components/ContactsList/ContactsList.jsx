@@ -13,6 +13,7 @@ export const ContactList = () => {
   console.log(filter);
   const contactsList = useGetContactsList(data, filter);
 
+  if (isLoading) return <h2>Loading...</h2>;
   return data && !isLoading ? (
     <Container>
       <List>
