@@ -6,26 +6,26 @@ import {
   Button,
   Container,
 } from './ContactsForm.styled';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from 'redux/contactsReducer';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addItem } from 'redux/contactsReducer';
 
 export const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  // const dispatch = useDispatch();
+  // const contacts = useSelector(state => state.contacts.items);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const normalizedName = name.trim().toLowerCase();
+    // const normalizedName = name.trim().toLowerCase();
 
-    if (contacts.find(({ name }) => name.toLowerCase() === normalizedName)) {
-      alert(`${name} is already in contacts`);
-    } else {
-      dispatch(addItem({ id: nanoid(), name: name.trim(), number: number }));
-    }
+    // if (contacts.find(({ name }) => name.toLowerCase() === normalizedName)) {
+    //   alert(`${name} is already in contacts`);
+    // } else {
+    //   dispatch(addItem({ id: nanoid(), name: name.trim(), number: number }));
+    // }
 
     reset();
   };

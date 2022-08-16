@@ -5,13 +5,15 @@ import { useGetContactsList } from 'hooks/useGetContactsList';
 import { useGetContactsQuery } from 'redux/contactsSlice';
 
 export const ContactList = () => {
-  const { data } = useGetContactsQuery();
+  const { data, isLoading } = useGetContactsQuery();
   console.log(data);
-  const contacts = useSelector(state => state.contacts.items);
+  console.log(isLoading);
+  // const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
+  console.log(filter);
   const contactsList = useGetContactsList(data, filter);
 
-  return data ? (
+  return data && !isLoading ? (
     <Container>
       <List>
         {contactsList.map(({ id, name, phone }) => (

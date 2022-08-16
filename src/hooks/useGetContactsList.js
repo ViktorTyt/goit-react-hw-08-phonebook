@@ -1,11 +1,16 @@
 const useGetContactsList = (contacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
+  let contactsFiltred;
 
-  const contactsFiltred = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
-  );
+  if (filter) {
+    const normalizedFilter = filter.toLowerCase();
 
-  return filter ? contactsFiltred : contacts;
+    contactsFiltred = contacts.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter)
+    );
+    return contactsFiltred;
+  }
+
+  return contacts;
 };
 
 export { useGetContactsList };
