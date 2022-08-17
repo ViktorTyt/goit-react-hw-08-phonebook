@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
 import { ContactItem, DeleteButton } from './ContactsListItem.styled';
-// import { useDispatch } from 'react-redux';
-// import { deleteItem } from 'redux/contactsReducer';
+import { ThreeDots } from 'react-loader-spinner';
 import { useDeleteContactMutation } from 'redux/contactsSlice';
 
 export const ContactListItem = ({ id, name, number }) => {
-  // const dispatch = useDispatch();
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   const handleDeleteIten = async id => {
-    console.log('id:', id);
     await deleteContact(id);
   };
 
@@ -21,7 +18,20 @@ export const ContactListItem = ({ id, name, number }) => {
         disabled={isLoading}
         onClick={() => handleDeleteIten(id)}
       >
-        Delete
+        {isLoading ? (
+          <ThreeDots
+            height="22"
+            width="22"
+            radius="9"
+            color="#ff7700"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
+        ) : (
+          'Delete'
+        )}
       </DeleteButton>
     </ContactItem>
   );

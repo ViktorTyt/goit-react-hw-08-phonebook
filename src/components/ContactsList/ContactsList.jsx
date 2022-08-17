@@ -1,20 +1,19 @@
 import { Container, List, Message } from './ContactsList.styled';
 import { ContactListItem } from 'components/ContactsListItem';
+import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { useGetContactsList } from 'hooks/useGetContactsList';
 import { useGetContactsQuery } from 'redux/contactsSlice';
 
 export const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
-  console.log(data);
-  console.log(isLoading);
-  // const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
-  console.log(filter);
   const contactsList = useGetContactsList(data, filter);
+  console.log(contactsList);
 
-  if (isLoading) return <h2>Loading...</h2>;
-  return data && !isLoading ? (
+  if (isLoading) return <Loader />;
+
+  return contactsList.length > 0 ? (
     <Container>
       <List>
         {contactsList.map(({ id, name, phone }) => (
@@ -22,7 +21,7 @@ export const ContactList = () => {
         ))}
       </List>
     </Container>
-  ) : filter ? (
+  ) : filter !== '' && contactsList.length === 0 ? (
     <Message> {'No contact found'}</Message>
   ) : (
     <Message>{'Your Phonebook is empty'}</Message>
