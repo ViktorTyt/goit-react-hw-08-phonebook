@@ -6,7 +6,7 @@ import { useDeleteContactMutation } from 'redux/contactsSlice';
 
 export const ContactListItem = ({ id, name, number }) => {
   // const dispatch = useDispatch();
-  const [deleteContact] = useDeleteContactMutation();
+  const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   const handleDeleteIten = async id => {
     console.log('id:', id);
@@ -16,7 +16,11 @@ export const ContactListItem = ({ id, name, number }) => {
   return (
     <ContactItem>
       <span>•</span> {name} <br /> tel: {number}
-      <DeleteButton id={id} type="button" onClick={() => handleDeleteIten(id)}>
+      <DeleteButton
+        type="button"
+        disabled={isLoading}
+        onClick={() => handleDeleteIten(id)}
+      >
         Delete
       </DeleteButton>
     </ContactItem>

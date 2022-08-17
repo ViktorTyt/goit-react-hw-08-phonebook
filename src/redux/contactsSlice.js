@@ -11,11 +11,12 @@ export const contactsApi = createApi({
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => 'contacts',
+      providesTags: ['Contacts'],
     }),
     addContact: builder.mutation({
       query: data => ({
         url: 'contacts',
-        method: 'post',
+        method: 'POST',
         body: data,
       }),
       invalidatesTags: ['Contacts'],

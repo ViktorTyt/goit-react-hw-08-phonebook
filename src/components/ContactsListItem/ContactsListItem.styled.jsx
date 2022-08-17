@@ -31,7 +31,7 @@ export const DeleteButton = styled.button`
     border: 2px solid ${theme.colors.darkOpange};
   }
 
-  :active {
-    border: 2px solid ${theme.colors.darkOpange};
-  }
+  // :active {
+  //   border: 2px solid ${theme.colors.darkOpange};
+  // }
 `;
