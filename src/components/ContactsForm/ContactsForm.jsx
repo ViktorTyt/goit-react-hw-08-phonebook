@@ -8,6 +8,7 @@ import {
 } from './ContactsForm.styled';
 // import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { addItem } from 'redux/contactsReducer';
 import {
@@ -18,11 +19,8 @@ import {
 export const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const dispatch = useDispatch();
-  // const contacts = useSelector(state => state.contacts.items);
-
   const { data } = useGetContactsQuery();
-  const [addItem] = useAddContactMutation();
+  const [addItem, { isLoading }] = useAddContactMutation();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -32,6 +30,7 @@ export const ContactsForm = () => {
       alert(`${name} is already in contacts`);
     } else {
       await addItem({ name: name.trim(), phone: number });
+      console.log(isLoading);
     }
 
     reset();
@@ -72,7 +71,22 @@ export const ContactsForm = () => {
             onChange={handleInputNumberChange}
           />
         </Label>
-        <Button type="submit">Add contact</Button>
+        <Button type="submit">
+          {isLoading ? (
+            <ThreeDots
+              height="56"
+              width="56"
+              radius="9"
+              color="white"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          ) : (
+            'Add contact'
+          )}
+        </Button>
       </Form>
     </Container>
   );

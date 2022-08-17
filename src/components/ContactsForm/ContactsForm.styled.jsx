@@ -6,10 +6,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 2px solid ${theme.colors.dark};
-  border-radius: 4px;
-  shadows: ${theme.shadows.regular};
+  // border: 2px solid ${theme.colors.dark};
+  box-shadow: ${theme.shadows.regular};
+  margin-top: 72px;
   margin-bottom: 24px;
+
+  border-radius: 12px;
 `;
 
 export const Form = styled.form`
@@ -20,6 +22,10 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
   padding: 16px 0;
+  background-color: lightblue;
+  border-radius: 12px;
+
+  box-shadow: ${theme.shadows.large};
 `;
 
 export const Label = styled.label`
@@ -51,6 +57,9 @@ export const Input = styled.input`
 export const Button = styled.button`
   width: 136px;
   height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${theme.colors.accent};
   color: ${theme.colors.dark};
   font-size: 16px;

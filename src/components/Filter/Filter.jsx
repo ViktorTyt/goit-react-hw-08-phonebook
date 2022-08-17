@@ -1,4 +1,4 @@
-import { Label, Title, FilterInput } from './Filter.styled';
+import { Wrapper, Label, Title, FilterInput } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterItem } from 'redux/contactsReducer';
 import { useGetContactsQuery } from 'redux/contactsSlice';
@@ -15,15 +15,17 @@ export const Filter = () => {
 
   return (
     ((!isLoading && data.length > 1) || filter) && (
-      <Label>
-        <Title>Find contacts by name :</Title>
-        <FilterInput
-          type="text"
-          name="filter"
-          value={filter}
-          onChange={({ target: { value } }) => handleFilterChange(value)}
-        />
-      </Label>
+      <Wrapper>
+        <Label>
+          <Title>Find contacts by name :</Title>
+          <FilterInput
+            type="text"
+            name="filter"
+            value={filter}
+            onChange={({ target: { value } }) => handleFilterChange(value)}
+          />
+        </Label>
+      </Wrapper>
     )
   );
 };
