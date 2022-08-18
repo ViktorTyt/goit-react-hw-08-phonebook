@@ -1,4 +1,4 @@
-import { Container, List, Message } from './ContactsList.styled';
+import { List, Message } from './ContactsList.styled';
 import { ContactListItem } from 'components/ContactsListItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
@@ -14,13 +14,11 @@ export const ContactList = () => {
   if (isLoading) return <Loader />;
 
   return contactsList.length > 0 ? (
-    <Container>
-      <List>
-        {contactsList.map(({ id, name, phone }) => (
-          <ContactListItem key={id} id={id} name={name} number={phone} />
-        ))}
-      </List>
-    </Container>
+    <List>
+      {contactsList.map(({ id, name, phone }) => (
+        <ContactListItem key={id} id={id} name={name} number={phone} />
+      ))}
+    </List>
   ) : filter !== '' && contactsList.length === 0 ? (
     <Message> {'No contact found'}</Message>
   ) : (

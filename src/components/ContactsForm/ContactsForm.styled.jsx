@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   justify-content: space-around;
   // border: 2px solid ${theme.colors.dark};
   box-shadow: ${theme.shadows.regular};
@@ -15,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 290px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;

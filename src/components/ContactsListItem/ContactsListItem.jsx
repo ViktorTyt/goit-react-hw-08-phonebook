@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
-import { ContactItem, DeleteButton } from './ContactsListItem.styled';
+import {
+  ContactItem,
+  ContactItemWrapper,
+  ItemName,
+  ItemNumber,
+  DeleteButton,
+} from './ContactsListItem.styled';
 import { ThreeDots } from 'react-loader-spinner';
 import { useDeleteContactMutation } from 'redux/contactsSlice';
 
@@ -12,7 +18,10 @@ export const ContactListItem = ({ id, name, number }) => {
 
   return (
     <ContactItem>
-      <span>•</span> {name} <br /> tel: {number}
+      <ContactItemWrapper>
+        <ItemName>{name}</ItemName>
+        <ItemNumber>tel: {number}</ItemNumber>
+      </ContactItemWrapper>
       <DeleteButton
         type="button"
         disabled={isLoading}
@@ -23,7 +32,7 @@ export const ContactListItem = ({ id, name, number }) => {
             height="22"
             width="22"
             radius="9"
-            color="#ff7700"
+            color="black"
             ariaLabel="three-dots-loading"
             wrapperStyle={{}}
             wrapperClassName=""

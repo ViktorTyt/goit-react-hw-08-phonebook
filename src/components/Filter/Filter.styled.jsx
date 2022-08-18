@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
 export const Wrapper = styled.div`
-  width: 290px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 24px;
   background-color: lightblue;
   border-radius: 12px;
   box-shadow: ${theme.shadows.regular};

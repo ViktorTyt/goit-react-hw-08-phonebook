@@ -1,7 +1,13 @@
 import { ContactsForm } from 'components/ContactsForm';
 import { ContactList } from 'components/ContactsList';
 import { Filter } from 'components/Filter';
-import { Container, Header, MainTitle, SectionTitle } from 'App/App.styled';
+import {
+  Container,
+  Section,
+  Header,
+  MainTitle,
+  SectionTitle,
+} from 'App/App.styled';
 
 export const App = () => {
   return (
@@ -12,12 +18,14 @@ export const App = () => {
         </Container>
       </Header>
       <main>
-        <Container>
-          <ContactsForm />
-          <SectionTitle>Contacts</SectionTitle>
-          <Filter />
-          <ContactList />
-        </Container>
+        <Section>
+          <Container>
+            <ContactsForm />
+            <SectionTitle>Contacts</SectionTitle>
+            <Filter />
+            <ContactList />
+          </Container>
+        </Section>
       </main>
     </>
   );
