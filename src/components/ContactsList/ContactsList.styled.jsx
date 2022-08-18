@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
-export const Container = styled.div``;
-
 export const Title = styled.h2`
   font-size: 48px;
   color: ${theme.colors.dark};

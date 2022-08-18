@@ -12,6 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Section = styled.section``;
+
 export const Header = styled.header`
   position: fixed;
   top: 0;

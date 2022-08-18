@@ -7,7 +7,6 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-around;
-  // border: 2px solid ${theme.colors.dark};
   box-shadow: ${theme.shadows.regular};
   margin-top: 72px;
   margin-bottom: 24px;

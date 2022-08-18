@@ -1,15 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import counterSlice from './contactsReducer';
-import { contactsApi } from './contactsSlice';
-
-// const persistConfig = {
-//   key: 'items',
-//   storage,
-//   whitelist: ['items'],
-// };
-
-// const persistedMyContactsReducer = persistReducer(persistConfig, counterSlice);
+import counterSlice from './filterSlice';
+import { contactsApi } from './contactsApi';
 
 export const store = configureStore({
   reducer: {

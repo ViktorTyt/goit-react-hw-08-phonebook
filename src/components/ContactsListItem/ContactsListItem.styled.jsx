@@ -34,18 +34,9 @@ export const DeleteButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  // text-transform: lowercase;
-  // border: 2px solid ${theme.colors.dark};
   transition: background-color ${theme.animation.cubicBezierV2};
 
   :hover {
-    // color: ${theme.colors.white};
-
     background-color: ${theme.colors.darkOpange};
-    // border: 2px solid ${theme.colors.darkOpange};
   }
-
-  // :active {
-  //   border: 2px solid ${theme.colors.darkOpange};
-  // }
 `;

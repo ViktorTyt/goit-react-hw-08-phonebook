@@ -6,15 +6,9 @@ import {
   Button,
   Container,
 } from './ContactsForm.styled';
-// import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addItem } from 'redux/contactsReducer';
-import {
-  useGetContactsQuery,
-  useAddContactMutation,
-} from 'redux/contactsSlice';
+import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsApi';
 
 export const ContactsForm = () => {
   const [name, setName] = useState('');
@@ -30,7 +24,6 @@ export const ContactsForm = () => {
       alert(`${name} is already in contacts`);
     } else {
       await addItem({ name: name.trim(), phone: number });
-      console.log(isLoading);
     }
 
     reset();

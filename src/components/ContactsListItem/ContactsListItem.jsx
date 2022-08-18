@@ -7,7 +7,7 @@ import {
   DeleteButton,
 } from './ContactsListItem.styled';
 import { ThreeDots } from 'react-loader-spinner';
-import { useDeleteContactMutation } from 'redux/contactsSlice';
+import { useDeleteContactMutation } from 'redux/contactsApi';
 
 export const ContactListItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();

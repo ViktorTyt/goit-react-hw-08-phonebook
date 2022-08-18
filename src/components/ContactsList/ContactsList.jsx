@@ -3,13 +3,12 @@ import { ContactListItem } from 'components/ContactsListItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { useGetContactsList } from 'hooks/useGetContactsList';
-import { useGetContactsQuery } from 'redux/contactsSlice';
+import { useGetContactsQuery } from 'redux/contactsApi';
 
 export const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
   const filter = useSelector(state => state.contacts.filter);
   const contactsList = useGetContactsList(data, filter);
-  console.log(contactsList);
 
   if (isLoading) return <Loader />;
 
