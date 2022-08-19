@@ -4,16 +4,17 @@ import { theme } from 'styles/theme';
 export const ContactItem = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
-  background-color: lightblue;
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.lightblue};
   border-radius: 4px;
   box-shadow: ${theme.shadows.regular};
 
   :not(:last-child) {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 `;
 export const ContactItemWrapper = styled.div`
@@ -26,7 +27,7 @@ export const ItemNumber = styled.span``;
 
 export const DeleteButton = styled.button`
   width: 40px;
-  height: auto;
+  height: 24px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
@@ -34,6 +35,7 @@ export const DeleteButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  // background-color: ${theme.colors.gray};
   transition: background-color ${theme.animation.cubicBezierV2};
 
   :hover {

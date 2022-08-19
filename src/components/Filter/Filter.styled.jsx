@@ -8,8 +8,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 24px;
-  background-color: lightblue;
-  border-radius: 12px;
+  padding: 16px 0;
+  background-color: ${theme.colors.lightblue};
+  border-radius: 8px;
   box-shadow: ${theme.shadows.regular};
 `;
 export const Label = styled.label`
@@ -21,6 +22,7 @@ export const Label = styled.label`
 export const Title = styled.span`
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
+  color: ${theme.colors.white};
   margin-bottom: 12px;
 `;
 

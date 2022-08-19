@@ -19,15 +19,22 @@ export const Header = styled.header`
   left: 0;
   width: 100%;
   heigth: 36px;
-  background-color: ${theme.colors.accent};
-  box-shadow: ${theme.shadows.regular};
+  padding: 8px 0;
+  background-color: ${theme.colors.darkbackground};
+  box-shadow: ${theme.shadows.medium};
 `;
 
 export const MainTitle = styled.h2`
   font-size: 36px;
+  color: ${theme.colors.white};
   margin-bottom: 0;
 `;
 
 export const SectionTitle = styled.h2`
+  width: 100%;
   font-size: 24px;
+  color: ${theme.colors.white};
+  text-align: center;
+  padding: 8px 0;
+  background-color: ${theme.colors.darkbackground};
 `;

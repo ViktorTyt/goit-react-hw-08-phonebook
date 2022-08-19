@@ -10,8 +10,7 @@ export const Container = styled.div`
   box-shadow: ${theme.shadows.regular};
   margin-top: 72px;
   margin-bottom: 24px;
-
-  border-radius: 12px;
+  border-radius: 4px;
 `;
 
 export const Form = styled.form`
@@ -22,8 +21,8 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
   padding: 16px 0;
-  background-color: lightblue;
-  border-radius: 12px;
+  background-color: ${theme.colors.lightblue};
+  border-radius: 4px;
 
   box-shadow: ${theme.shadows.large};
 `;
@@ -38,6 +37,7 @@ export const Label = styled.label`
 export const Title = styled.span`
   font-size: ${theme.fontSizes.large};
   font-weight: 500;
+  color: ${theme.colors.white};
   margin-bottom: 8px;
 `;
 
@@ -61,16 +61,15 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   background-color: ${theme.colors.accent};
-  color: ${theme.colors.dark};
+  color: ${theme.colors.white};
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 4px;
   border: 2px solid ${theme.colors.dark};
-  transition: ${theme.animation.cubicBezierV2};
+  transition: background-color ${theme.animation.cubicBezierV2};
 
   :hover {
-    color: ${theme.colors.white};
     background-color: ${theme.colors.darkOpange};
   }
   :active {
