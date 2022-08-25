@@ -21,10 +21,13 @@ export const Header = styled.header`
   width: 100%;
   heigth: 36px;
   padding: 8px 0;
-  background-color: ${theme.colors.gray};
+  background-color: ${theme.colors.accent};
   box-shadow: ${theme.shadows.medium};
 `;
 
+export const HeaderContainer = styled.div`
+  display: flex;
+`;
 export const MainTitle = styled.h2`
   font-size: 36px;
   color: ${theme.colors.white};

@@ -1,7 +1,7 @@
-import { UserMenu } from 'components/UserMenu';
+import { Menu } from 'components/UserMenu';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container, Header, Link } from './Layout.styled';
+import { Container, Header, HeaderContainer, Link } from './Layout.styled';
 import { useSelector } from 'react-redux';
 
 export const Layout = () => {
@@ -11,22 +11,23 @@ export const Layout = () => {
     <>
       <Header>
         <Container>
-          <nav>
-            <Link to="/">Home</Link>
-            {token ? (
-              <>
-                <Link to="/contacts">Contacts</Link>
-                <Link to="/logout">Logout</Link>
-              </>
-            ) : (
-              <>
-                <Link to="/register">Register</Link>
+          <HeaderContainer>
+            <nav>
+              <Link to="/">Home</Link>
+              {token ? (
+                <>
+                  <Link to="/contacts">Contacts</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/register">Register</Link>
 
-                <Link to="/login">Login</Link>
-              </>
-            )}
-          </nav>
-          <UserMenu />
+                  <Link to="/login">Login</Link>
+                </>
+              )}
+            </nav>
+            <Menu />
+          </HeaderContainer>
         </Container>
       </Header>
       <Container>

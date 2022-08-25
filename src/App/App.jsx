@@ -4,10 +4,14 @@ import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { Contacts } from 'pages/Contacts';
 import { Home } from 'pages/Home';
-import Logout from 'pages/Logout/Logout';
+// import Logout from 'pages/Logout/Logout';
+// import UserMenu from 'components/UserMenu';
 import { useCurrentUserQuery } from 'redux/userAPI';
 import { useSelector } from 'react-redux';
-import PrivateRoutes from 'components/PrivateRoutes';
+import { PrivateRoutes } from 'components/PrivateRoutes';
+import { Menu } from 'components/UserMenu';
+// import { Suspense } from 'react';
+import { Container } from './App.styled';
 
 export const App = () => {
   const { token } = useSelector(state => state.users);
@@ -16,17 +20,18 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
+      <Layout />
+      <Container>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<PrivateRoutes />}>
+            <Route path="/usermenu" element={<Menu />} />
             <Route path="/contacts" element={<Contacts />} />
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
+      </Container>
     </>
   );
 

@@ -20,7 +20,7 @@ export const Header = styled.header`
   width: 100%;
   heigth: 36px;
   padding: 8px 0;
-  background-color: ${theme.colors.darkbackground};
+  background-color: ${theme.colors.accent};
   box-shadow: ${theme.shadows.medium};
 `;
 
