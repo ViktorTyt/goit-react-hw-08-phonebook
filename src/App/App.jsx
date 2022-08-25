@@ -4,8 +4,12 @@ import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { Contacts } from 'pages/Contacts';
 import { Home } from 'pages/Home';
+import { useCurrentUserQuery } from 'redux/userAPI';
 
 export const App = () => {
+  const { data } = useCurrentUserQuery();
+  console.log(data);
+
   return (
     <>
       <Routes>
