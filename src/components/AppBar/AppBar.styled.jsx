@@ -27,7 +27,27 @@ export const Header = styled.header`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-beatween;
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media screen and (min-width: 1024px) {
+    width: 1024px;
+  }
 `;
+
+export const HeaderNav = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1024px) {
+    width: 1024px;
+  }
+`;
+
 export const MainTitle = styled.h2`
   font-size: 36px;
   color: ${theme.colors.white};

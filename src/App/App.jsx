@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from 'components/Layot';
+import { AppBar } from 'components/AppBar';
 import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { Contacts } from 'pages/Contacts';
@@ -9,7 +9,7 @@ import { Home } from 'pages/Home';
 import { useCurrentUserQuery } from 'redux/userAPI';
 import { useSelector } from 'react-redux';
 import { PrivateRoutes } from 'components/PrivateRoutes';
-import { Menu } from 'components/UserMenu';
+// import { Menu } from 'components/UserMenu';
 // import { Suspense } from 'react';
 import { Container } from './App.styled';
 
@@ -20,14 +20,14 @@ export const App = () => {
 
   return (
     <>
-      <Layout />
+      <AppBar />
+
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<PrivateRoutes />}>
-            <Route path="/usermenu" element={<Menu />} />
             <Route path="/contacts" element={<Contacts />} />
           </Route>
         </Routes>

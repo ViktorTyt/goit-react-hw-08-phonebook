@@ -41,6 +41,12 @@ const userSlice = createSlice({
           state.name = payload.name;
           state.email = payload.email;
         }
+      )
+      .addMatcher(
+        userApi.endpoints.logout.matchFulfilled,
+        (state, { payload }) => {
+          state.token = '';
+        }
       );
   },
 });
