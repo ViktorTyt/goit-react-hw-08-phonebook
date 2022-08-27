@@ -8,7 +8,10 @@ import {
 } from './ContactsForm.styled';
 import { useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsApi';
+import {
+  useGetContactsQuery,
+  useAddContactMutation,
+} from 'redux/contactsSwaggerApi';
 
 export const ContactsForm = () => {
   const [name, setName] = useState('');
@@ -23,7 +26,7 @@ export const ContactsForm = () => {
     if (data.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
-      await addItem({ name: name.trim(), phone: number });
+      await addItem({ name: name.trim(), number: number });
     }
 
     reset();

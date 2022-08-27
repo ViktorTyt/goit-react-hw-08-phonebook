@@ -20,6 +20,14 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
       .addMatcher(
+        userApi.endpoints.registrer.matchFulfilled,
+        (state, { payload }) => {
+          state.name = payload.user.name;
+          state.email = payload.user.email;
+          state.token = payload.token;
+        }
+      )
+      .addMatcher(
         userApi.endpoints.login.matchFulfilled,
         (state, { payload }) => {
           state.name = payload.user.name;

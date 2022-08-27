@@ -3,10 +3,14 @@ import { ContactListItem } from 'components/ContactsListItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { useGetContactsList } from 'hooks/useGetContactsList';
-import { useGetContactsQuery } from 'redux/contactsApi';
+import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
+// import { useCurrentUserQuery } from 'redux/userAPI';
 
 export const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
+  // const { token } = useSelector(state => state.users);
+  // const { data: currentUserData } = useCurrentUserQuery(null, { skip: !token });
+
   const filter = useSelector(state => state.contacts.filter);
   const contactsList = useGetContactsList(data, filter);
 
@@ -14,8 +18,8 @@ export const ContactList = () => {
 
   return contactsList.length > 0 ? (
     <List>
-      {contactsList.map(({ id, name, phone }) => (
-        <ContactListItem key={id} id={id} name={name} number={phone} />
+      {contactsList.map(({ id, name, number }) => (
+        <ContactListItem key={id} id={id} name={name} number={number} />
       ))}
     </List>
   ) : filter !== '' && contactsList.length === 0 ? (

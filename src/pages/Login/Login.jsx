@@ -28,7 +28,6 @@ export const Login = () => {
     e.preventDefault();
     const credentials = { email, password };
     login(credentials);
-    <Navigate to="/" replace />;
   };
 
   return (

@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import counterSlice from './filterSlice';
-import { contactsApi } from './contactsApi';
+import { contactsApi } from './contactsSwaggerApi';
 import userSlice from './userSlice';
 import { userApi } from './userAPI';
 
