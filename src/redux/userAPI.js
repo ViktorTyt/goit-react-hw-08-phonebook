@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { REHYDRATE } from 'redux-persist';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: 'https://connections-api.herokuapp.com',
@@ -17,6 +18,12 @@ export const baseQuery = fetchBaseQuery({
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery,
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === REHYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
+  keepUnusedDataFor: 5,
   tagTypes: ['Users'],
   endpoints: builder => ({
     registrer: builder.mutation({

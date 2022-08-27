@@ -1,11 +1,11 @@
 import { Wrapper, Label, Title, FilterInput } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterItem } from 'redux/filterSlice';
-import { useGetContactsQuery } from 'redux/contactsApi';
+import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.filter.filter);
   const { data, isLoading } = useGetContactsQuery();
 
   const handleFilterChange = value => {

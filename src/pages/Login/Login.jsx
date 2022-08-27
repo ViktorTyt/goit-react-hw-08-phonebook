@@ -4,7 +4,7 @@ import { useLoginMutation } from 'redux/userAPI';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-export const Login = () => {
+const Login = () => {
   const [email, setEmail] = useState('557711@gmail.com');
   const [password, setPassword] = useState('qweqwe123');
   const [login] = useLoginMutation();
@@ -58,3 +58,5 @@ export const Login = () => {
     </>
   );
 };
+
+export default Login;

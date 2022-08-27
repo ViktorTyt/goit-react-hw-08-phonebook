@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { userApi } from './userAPI';
+import { contactsApi } from './contactsApi';
 
-const initialState = { name: '', email: '', token: '' };
+const initialState = { name: '', email: '', token: '', userContacts: null };
 
 const userSlice = createSlice({
   name: 'users',
@@ -38,7 +39,7 @@ const userSlice = createSlice({
       .addMatcher(
         userApi.endpoints.currentUser.matchRejected,
         (state, { payload }) => {
-          if (payload?.status) {
+          if (payload?.status === 401) {
             state.token = '';
           }
         }
@@ -54,6 +55,13 @@ const userSlice = createSlice({
         userApi.endpoints.logout.matchFulfilled,
         (state, { payload }) => {
           state.token = '';
+          state.userContacts = null;
+        }
+      )
+      .addMatcher(
+        contactsApi.endpoints.getContacts.matchFulfilled,
+        (state, { payload }) => {
+          state.userContacts = payload;
         }
       );
   },

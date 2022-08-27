@@ -10,10 +10,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import counterSlice from './filterSlice';
+import filterSlice from './filterSlice';
 import { contactsApi } from './contactsSwaggerApi';
 import userSlice from './userSlice';
 import { userApi } from './userAPI';
+// import contactsSlice from './contactsSlice';
 
 const persistConfig = {
   key: 'token',
@@ -26,9 +27,10 @@ const persistedMyContactsReducer = persistReducer(persistConfig, userSlice);
 const store = configureStore({
   reducer: {
     [contactsApi.reducerPath]: contactsApi.reducer,
-    contacts: counterSlice,
+    filter: filterSlice,
     [userApi.reducerPath]: userApi.reducer,
     users: persistedMyContactsReducer,
+    // contacts: contactsSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

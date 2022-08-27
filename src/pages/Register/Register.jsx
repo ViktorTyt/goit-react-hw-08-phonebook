@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useRegistrerMutation } from 'redux/userAPI';
 import { useSelector } from 'react-redux';
 
-export const Register = () => {
+const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -71,3 +71,5 @@ export const Register = () => {
     </>
   );
 };
+
+export default Register;

@@ -4,14 +4,15 @@ import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { useGetContactsList } from 'hooks/useGetContactsList';
 import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
-// import { useCurrentUserQuery } from 'redux/userAPI';
 
 export const ContactList = () => {
-  const { data, isLoading } = useGetContactsQuery();
-  // const { token } = useSelector(state => state.users);
-  // const { data: currentUserData } = useCurrentUserQuery(null, { skip: !token });
+  const { token } = useSelector(state => state.users);
+  console.log(token);
+  const { data, isLoading } = useGetContactsQuery(null, {
+    skip: !token,
+  });
 
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.filter.filter);
   const contactsList = useGetContactsList(data, filter);
 
   if (isLoading) return <Loader />;
