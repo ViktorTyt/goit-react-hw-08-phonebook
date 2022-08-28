@@ -7,15 +7,15 @@ import { Container, Header, HeaderNav, HeaderContainer } from './AppBar.styled';
 import { useSelector } from 'react-redux';
 
 export const AppBar = () => {
-  const { token } = useSelector(state => state.users);
+  const { isLoggedIn } = useSelector(state => state.users);
 
   return (
     <>
       <Header>
         <HeaderContainer>
           <HeaderNav>
-            <Navigation token={token} />
-            {token ? <Menu /> : <AuthNav />}
+            <Navigation />
+            {isLoggedIn ? <Menu /> : <AuthNav />}
           </HeaderNav>
         </HeaderContainer>
       </Header>

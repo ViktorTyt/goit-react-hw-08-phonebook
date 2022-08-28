@@ -5,11 +5,11 @@ import { REHYDRATE } from 'redux-persist';
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery,
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === REHYDRATE) {
-      return action.payload[reducerPath];
-    }
-  },
+  // extractRehydrationInfo(action, { reducerPath }) {
+  //   if (action.type === REHYDRATE) {
+  //     return action.payload[reducerPath];
+  //   }
+  // },
   keepUnusedDataFor: 5,
   tagTypes: ['Contacts'],
   endpoints: builder => ({

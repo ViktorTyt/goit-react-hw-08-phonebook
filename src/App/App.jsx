@@ -19,11 +19,11 @@ const Register = lazy(() => import('pages/Register'));
 const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
-  const { token } = useSelector(state => state.users);
-  console.log(token);
-  useCurrentUserQuery(null, { skip: !token });
+  const { isLoggedIn } = useSelector(state => state.users);
+  console.log(isLoggedIn);
+  useCurrentUserQuery();
   // console.log(data);
-  useGetContactsQuery();
+  // useGetContactsQuery();
 
   return (
     <>

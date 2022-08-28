@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from './Navigation.styled';
+import { useSelector } from 'react-redux';
 
-const Navigation = ({ token }) => {
+const Navigation = () => {
+  const { isLoggedIn } = useSelector(state => state.users);
   return (
     <div>
       <Link to="/">Home</Link>
-      {token && <Link to="/contacts">Contacts</Link>}
+      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </div>
   );
 };

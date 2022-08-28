@@ -2,7 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { userApi } from './userAPI';
 import { contactsApi } from './contactsApi';
 
-const initialState = { name: '', email: '', token: '', userContacts: null };
+const initialState = {
+  name: '',
+  email: '',
+  token: '',
+  isLoggedIn: false,
+  userContacts: null,
+};
 
 const userSlice = createSlice({
   name: 'users',
@@ -26,6 +32,7 @@ const userSlice = createSlice({
           state.name = payload.user.name;
           state.email = payload.user.email;
           state.token = payload.token;
+          state.isLoggedIn = true;
         }
       )
       .addMatcher(
@@ -34,6 +41,7 @@ const userSlice = createSlice({
           state.name = payload.user.name;
           state.email = payload.user.email;
           state.token = payload.token;
+          state.isLoggedIn = true;
         }
       )
       .addMatcher(
@@ -49,12 +57,15 @@ const userSlice = createSlice({
         (state, { payload }) => {
           state.name = payload.name;
           state.email = payload.email;
+
+          state.isLoggedIn = true;
         }
       )
       .addMatcher(
         userApi.endpoints.logout.matchFulfilled,
         (state, { payload }) => {
           state.token = '';
+          state.isLoggedIn = false;
           state.userContacts = null;
         }
       )

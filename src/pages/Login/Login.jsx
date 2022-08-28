@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('557711@gmail.com');
   const [password, setPassword] = useState('qweqwe123');
   const [login] = useLoginMutation();
-  const { token } = useSelector(state => state.users);
+  const { isLoggedIn } = useSelector(state => state.users);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <>
-      {token && <Navigate to="/" replace />}
+      {isLoggedIn && <Navigate to="/" replace />}
 
       <Form onSubmit={handleSubmit}>
         <Label>

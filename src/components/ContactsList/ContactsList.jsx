@@ -6,10 +6,10 @@ import { useGetContactsList } from 'hooks/useGetContactsList';
 import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
 
 export const ContactList = () => {
-  const { token } = useSelector(state => state.users);
-  console.log(token);
+  const { isLoggedIn } = useSelector(state => state.users);
+  console.log(isLoggedIn);
   const { data, isLoading } = useGetContactsQuery(null, {
-    skip: !token,
+    skip: !isLoggedIn,
   });
 
   const filter = useSelector(state => state.filter.filter);

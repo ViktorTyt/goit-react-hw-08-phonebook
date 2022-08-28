@@ -18,11 +18,11 @@ export const baseQuery = fetchBaseQuery({
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery,
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === REHYDRATE) {
-      return action.payload[reducerPath];
-    }
-  },
+  // extractRehydrationInfo(action, { reducerPath }) {
+  //   if (action.type === REHYDRATE) {
+  //     return action.payload[reducerPath];
+  //   }
+  // },
   keepUnusedDataFor: 5,
   tagTypes: ['Users'],
   endpoints: builder => ({
