@@ -21,18 +21,5 @@ export const Modal = styled.div`
     border-radius: 4px;
     transform: translate(-50%, -100%) scale(1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: #ffffff;
-
-    .&active {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-
-    // @media screen and (min-width:480px) {
-    //     width: 450px;
-    // }
-
-    // @media screen and (min-width:1200px) {
-    //     width: 100%x;
-    }
 }
 `;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ContactsForm } from 'components/ContactsForm';
 import { Overlay, Modal } from './ModalAddContact.styled';
 
-export const ModalAddContact = ({ isModalShow, onClose }) => {
+export const ModalAddContact = ({ onClose }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 

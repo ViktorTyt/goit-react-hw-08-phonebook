@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from './AuthNav.styled';
+import { Wrapper, Link } from './AuthNav.styled';
 
 const AuthNav = () => {
   return (
-    <div>
+    <Wrapper>
       <Link to="/register">Register</Link>
       <Link to="/login">Login</Link>
-    </div>
+    </Wrapper>
   );
 };
 

@@ -29,7 +29,7 @@ export const HeaderContainer = styled.div`
   padding: 12px 15px;
 
   @media screen and (min-width: 768px) {
-    width: 1024px;
+    width: 768px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -39,9 +39,13 @@ export const HeaderContainer = styled.div`
 
 export const HeaderNav = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: no-wrap;
+  align-items: stretch;
   justify-content: space-between;
+
+  // @media screen and (min-width: 768px) {
+  //   align-items: center;
+  // }
 `;
 
 export const MainTitle = styled.h2`
@@ -68,10 +72,10 @@ export const Link = styled(NavLink)`
   font-weight: 500;
 
   &:hover {
-    text-decoration: underline;
+    background-color: ${theme.colors.royalBlue};
   }
 
   &.active {
-    background-color: ${theme.colors.royalBlue};
+    text-decoration: underline;
   }
 `;
