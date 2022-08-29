@@ -11,7 +11,11 @@ export const Container = styled.div`
   padding: 0 15px;
 `;
 
-export const Section = styled.section``;
+export const Section = styled.section`
+  display: flex;
+  padding: 24px 0;
+  gap: 24px;
+`;
 
 export const Header = styled.header`
   position: fixed;

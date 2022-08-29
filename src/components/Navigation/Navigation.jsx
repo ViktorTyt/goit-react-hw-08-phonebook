@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from './Navigation.styled';
 import { useSelector } from 'react-redux';
 

@@ -17,5 +17,5 @@ export const List = styled.ul`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 12px;
+  margin: 12px 0;
 `;

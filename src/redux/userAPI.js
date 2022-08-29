@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { REHYDRATE } from 'redux-persist';
+// import { REHYDRATE } from 'redux-persist';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: 'https://connections-api.herokuapp.com',

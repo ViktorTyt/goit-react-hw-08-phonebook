@@ -1,6 +1,3 @@
-// import Logout from 'pages/Logout/Logout';
-// import { Suspense } from 'react';
-// import { Outlet } from 'react-router-dom';
 import { Wrapper, Button } from './UserMenu.styled';
 import { useSelector } from 'react-redux';
 import { useLogoutMutation } from 'redux/userAPI';

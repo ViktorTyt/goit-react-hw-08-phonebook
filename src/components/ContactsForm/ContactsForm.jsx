@@ -13,7 +13,7 @@ import {
   useAddContactMutation,
 } from 'redux/contactsSwaggerApi';
 
-export const ContactsForm = () => {
+export const ContactsForm = ({ onClose }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const { data } = useGetContactsQuery();
@@ -27,6 +27,7 @@ export const ContactsForm = () => {
       alert(`${name} is already in contacts`);
     } else {
       await addItem({ name: name.trim(), number: number });
+      onClose();
     }
 
     reset();
@@ -80,7 +81,7 @@ export const ContactsForm = () => {
               visible={true}
             />
           ) : (
-            'Add contact'
+            'Save contact'
           )}
         </Button>
       </Form>

@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'redux/userAPI';
-import { REHYDRATE } from 'redux-persist';
+// import { REHYDRATE } from 'redux-persist';
 
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',

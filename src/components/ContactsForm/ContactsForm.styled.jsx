@@ -8,8 +8,8 @@ export const Container = styled.div`
   width: 100%;
   justify-content: space-around;
   box-shadow: ${theme.shadows.regular};
-  margin-top: 72px;
-  margin-bottom: 24px;
+  // margin-top: 72px;
+  // margin-bottom: 24px;
   border-radius: 4px;
 `;
 

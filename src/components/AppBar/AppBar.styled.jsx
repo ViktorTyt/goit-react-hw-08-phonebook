@@ -2,36 +2,35 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 import { NavLink } from 'react-router-dom';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 320px;
-  margin: 0 auto;
-  padding: 0 15px;
+// export const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-around;
+//   width: 320px;
+//   margin: 0 auto;
+//   padding: 0 15px;
+// `;
+
+export const Section = styled.section`
+  padding: 24px 0;
 `;
 
-export const Section = styled.section``;
-
 export const Header = styled.header`
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0;
-  width: 100%;
-  heigth: 36px;
-  padding: 8px 0;
+  display: flex;
+  width: auto;
   background-color: ${theme.colors.accent};
   box-shadow: ${theme.shadows.medium};
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-beatween;
   width: 320px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 12px 15px;
+
+  @media screen and (min-width: 768px) {
+    width: 1024px;
+  }
 
   @media screen and (min-width: 1024px) {
     width: 1024px;
@@ -40,12 +39,9 @@ export const HeaderContainer = styled.div`
 
 export const HeaderNav = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-
-  @media screen and (min-width: 1024px) {
-    width: 1024px;
-  }
 `;
 
 export const MainTitle = styled.h2`
