@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   display: flex;
   @media screen and (max-width: 767.9px) {
     flex-direction: column;
-    // justify-content: space-around;
   }
 
   @media screen and (min-width: 768px) {
@@ -21,12 +20,13 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: white;
   font-weight: 500;
+  transition: background-color ${theme.animation.cubicBezierV2};
 
   &:hover {
-    text-decoration: underline;
+    background-color: ${theme.colors.darkOpange};
   }
 
   &.active {
-    background-color: ${theme.colors.royalBlue};
+    border: 2px solid ${theme.colors.white};
   }
 `;

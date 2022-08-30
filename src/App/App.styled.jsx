@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from '../styles/theme';
+// import { theme } from '../styles/theme';
 
 export const Container = styled.div`
   display: flex;
@@ -14,31 +14,4 @@ export const Container = styled.div`
 export const Section = styled.section`
   display: flex;
   padding: 24px 0;
-  gap: 24px;
-`;
-
-export const Header = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  heigth: 36px;
-  padding: 8px 0;
-  background-color: ${theme.colors.accent};
-  box-shadow: ${theme.shadows.medium};
-`;
-
-export const MainTitle = styled.h2`
-  font-size: 36px;
-  color: ${theme.colors.white};
-  margin-bottom: 0;
-`;
-
-export const SectionTitle = styled.h2`
-  width: 100%;
-  font-size: 24px;
-  color: ${theme.colors.white};
-  text-align: center;
-  padding: 8px 0;
-  background-color: ${theme.colors.darkbackground};
 `;

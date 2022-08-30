@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { AppBar } from 'components/AppBar';
 import { useCurrentUserQuery } from 'redux/userAPI';
-// import { useSelector } from 'react-redux';
 import { PrivateRoute, PublicRoute } from 'components/routes';
 import { Container, Section } from './App.styled';
 

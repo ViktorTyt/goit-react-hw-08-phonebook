@@ -15,14 +15,16 @@ export const Link = styled(NavLink)`
   border-radius: 4px;
   font-size: ${theme.fontSizes.medium};
   text-decoration: none;
+  text-transform: uppercase;
   color: white;
   font-weight: 500;
+  transition: background-color ${theme.animation.cubicBezierV2};
 
   &:hover {
-    background-color: ${theme.colors.royalBlue};
+    background-color: ${theme.colors.darkOpange};
   }
 
   &.active {
-    text-decoration: underline;
+    border: 2px solid ${theme.colors.white};
   }
 `;

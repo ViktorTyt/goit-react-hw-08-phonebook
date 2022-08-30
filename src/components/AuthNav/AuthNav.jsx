@@ -1,4 +1,3 @@
-import React from 'react';
 import { Wrapper, Link } from './AuthNav.styled';
 
 const AuthNav = () => {
