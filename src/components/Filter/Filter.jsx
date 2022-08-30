@@ -7,7 +7,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter.filter);
   const { isLoggedIn } = useSelector(state => state.users);
-  console.log(isLoggedIn);
+
   const { data, isLoading } = useGetContactsQuery(null, {
     skip: !isLoggedIn,
   });

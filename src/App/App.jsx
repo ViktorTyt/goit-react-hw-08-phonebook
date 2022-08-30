@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { AppBar } from 'components/AppBar';
 import { useCurrentUserQuery } from 'redux/userAPI';
-import { useSelector } from 'react-redux';
-import { PrivateRoutes, PublicRoutes } from 'components/routes';
+// import { useSelector } from 'react-redux';
+import { PrivateRoute, PublicRoute } from 'components/routes';
 import { Container, Section } from './App.styled';
 
 const Home = lazy(() => import('pages/Home'));
@@ -12,42 +12,57 @@ const Register = lazy(() => import('pages/Register'));
 const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
-  const { isLoggedIn } = useSelector(state => state.users);
-  console.log(isLoggedIn);
-  useCurrentUserQuery();
+  const { isFetching } = useCurrentUserQuery();
 
   return (
-    <>
-      <AppBar />
+    !isFetching && (
+      <>
+        <AppBar />
 
-      <Section>
-        <Container>
-          <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/login"
-                element={
-                  <PublicRoutes restricted={true}>
-                    <Login />
-                  </PublicRoutes>
-                }
-              />
-              <Route
-                path="/register"
-                element={
-                  <PublicRoutes restricted={true}>
-                    <Register />
-                  </PublicRoutes>
-                }
-              />
-              <Route path="/" element={<PrivateRoutes />}>
-                <Route path="/contacts" element={<Contacts />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </Container>
-      </Section>
-    </>
+        <Section>
+          <Container>
+            <Suspense fallback={<p>Loading...</p>}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <PublicRoute>
+                      <Home />
+                    </PublicRoute>
+                  }
+                />
+
+                <Route
+                  path="/login"
+                  element={
+                    <PublicRoute restricted>
+                      <Login />
+                    </PublicRoute>
+                  }
+                />
+
+                <Route
+                  path="/register"
+                  element={
+                    <PublicRoute restricted>
+                      <Register />
+                    </PublicRoute>
+                  }
+                />
+
+                <Route
+                  path="/contacts"
+                  element={
+                    <PrivateRoute>
+                      <Contacts />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+            </Suspense>
+          </Container>
+        </Section>
+      </>
+    )
   );
 };

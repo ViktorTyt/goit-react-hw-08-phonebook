@@ -43,6 +43,7 @@ export const userApi = createApi({
     }),
     currentUser: builder.query({
       query: () => '/users/current',
+      providesTags: ['Users'],
     }),
     logout: builder.mutation({
       query: () => ({
