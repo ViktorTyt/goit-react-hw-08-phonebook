@@ -1,14 +1,11 @@
-import { Form, Label, Button } from './Login.styled';
 import { useState } from 'react';
 import { useLoginMutation } from 'redux/userAPI';
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Button, Form, Label } from './Login.styled';
 
 const Login = () => {
   const [email, setEmail] = useState('557711@gmail.com');
   const [password, setPassword] = useState('qweqwe123');
   const [login] = useLoginMutation();
-  const { isLoggedIn } = useSelector(state => state.users);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -32,8 +29,6 @@ const Login = () => {
 
   return (
     <>
-      {isLoggedIn && <Navigate to="/" replace />}
-
       <Form onSubmit={handleSubmit}>
         <Label>
           Email

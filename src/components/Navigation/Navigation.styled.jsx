@@ -21,7 +21,7 @@ export const Link = styled(NavLink)`
   transition: background-color ${theme.animation.cubicBezierV2};
 
   &:hover {
-    background-color: ${theme.colors.darkOpange};
+    text-decoration: underline;
   }
 
   &.active {

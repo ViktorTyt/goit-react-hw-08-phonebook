@@ -20,10 +20,11 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: white;
   font-weight: 500;
+  text-transform: uppercase;
   transition: background-color ${theme.animation.cubicBezierV2};
 
   &:hover {
-    background-color: ${theme.colors.darkOpange};
+    text-decoration: underline;
   }
 
   &.active {
