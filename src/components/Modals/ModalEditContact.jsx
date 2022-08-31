@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ContactsForm } from 'components/ContactsForm';
 import { Overlay, Modal } from './ModalAddContact.styled';
 
-export const ModalAddContact = ({ onClose }) => {
+export const ModalEditContact = ({ onClose }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
@@ -25,8 +25,8 @@ export const ModalAddContact = ({ onClose }) => {
 
   return (
     <Overlay onClick={handleBackDrop}>
-      <Modal isModalShow={true}>
-        <ContactsForm onClose={onClose} buttonText="save contact" />
+      <Modal isEditModalShow={true}>
+        <ContactsForm onClose={onClose} buttonText="save changes" />
       </Modal>
     </Overlay>
   );

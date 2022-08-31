@@ -13,7 +13,7 @@ import {
   useAddContactMutation,
 } from 'redux/contactsSwaggerApi';
 
-export const ContactsForm = ({ onClose }) => {
+export const ContactsForm = ({ onClose, buttonText }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const { data } = useGetContactsQuery();
@@ -81,7 +81,7 @@ export const ContactsForm = ({ onClose }) => {
               visible={true}
             />
           ) : (
-            'Save contact'
+            buttonText
           )}
         </Button>
       </Form>

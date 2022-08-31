@@ -42,3 +42,21 @@ export const DeleteButton = styled.button`
     background-color: ${theme.colors.darkOpange};
   }
 `;
+
+export const EditButton = styled.button`
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: ${theme.colors.gray};
+  transition: background-color ${theme.animation.cubicBezierV2};
+
+  :hover {
+    background-color: ${theme.colors.darkOpange};
+  }
+`;
