@@ -15,8 +15,12 @@ export const GlobalStyles = css`
     min-height: 100vh;
     font-style: normal;
   }
+
   h1,
-  h2,
+  h2 {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
   h3,
   h4,
   h5,
@@ -24,6 +28,7 @@ export const GlobalStyles = css`
   p {
     margin-top: 0;
   }
+
   ul,
   ol {
     list-style: none;

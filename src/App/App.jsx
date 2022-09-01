@@ -11,7 +11,7 @@ const Register = lazy(() => import('pages/Register'));
 const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
-  const { isFetching } = useCurrentUserQuery();
+  const { isFetching, error } = useCurrentUserQuery();
 
   return (
     !isFetching && (
@@ -59,6 +59,11 @@ export const App = () => {
                 />
               </Routes>
             </Suspense>
+            {error && (
+              <h2>
+                {error.status} {JSON.stringify(error.data)}
+              </h2>
+            )}
           </Container>
         </Section>
       </>

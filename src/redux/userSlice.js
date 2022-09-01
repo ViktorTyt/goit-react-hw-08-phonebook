@@ -7,7 +7,7 @@ const initialState = {
   email: '',
   token: '',
   isLoggedIn: false,
-  userContacts: null,
+  userContacts: [],
 };
 
 const userSlice = createSlice({

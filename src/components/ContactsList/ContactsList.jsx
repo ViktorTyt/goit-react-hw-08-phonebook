@@ -8,7 +8,7 @@ import { IoMdAdd } from 'react-icons/io';
 
 export const ContactList = ({ onShowModal }) => {
   const { isLoggedIn } = useSelector(state => state.users);
-  const { data, isLoading } = useGetContactsQuery(null, {
+  const { data, isLoading, error } = useGetContactsQuery(null, {
     skip: !isLoggedIn,
   });
 
@@ -19,7 +19,13 @@ export const ContactList = ({ onShowModal }) => {
 
   return (
     <>
-      {contactsList.length > 0 ? (
+      {error && (
+        <h2>
+          {error.status} {JSON.stringify(error.data)}
+        </h2>
+      )}
+
+      {!error && contactsList.length > 0 ? (
         <List>
           {contactsList.map(({ id, name, number }) => (
             <ContactListItem key={id} id={id} name={name} number={number} />
@@ -28,7 +34,7 @@ export const ContactList = ({ onShowModal }) => {
       ) : filter !== '' && contactsList.length === 0 ? (
         <Message> {'No contact found'}</Message>
       ) : (
-        <Message>{'Your Phonebook is empty'}</Message>
+        !error && <Message> {'Your Phonebook is empty'}</Message>
       )}
       {
         <Button onClick={onShowModal}>

@@ -7,6 +7,7 @@ export const Title = styled.h2`
 `;
 
 export const Message = styled.p`
+  position: fixed;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
   margin-bottom: 12px;

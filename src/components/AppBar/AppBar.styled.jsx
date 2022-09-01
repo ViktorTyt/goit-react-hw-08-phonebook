@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
 export const Header = styled.header`
-  position: fixed;
+  position: ${p => p.headerPosition};
   left: 0;
   top: 0;
   display: flex;
