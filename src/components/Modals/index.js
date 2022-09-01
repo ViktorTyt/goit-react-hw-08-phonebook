@@ -1,1 +1,1 @@
-export * from './ModalAddContact';
+export * from './ContactModal';

@@ -8,33 +8,50 @@ import {
 } from './ContactsForm.styled';
 import { useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import {
-  useGetContactsQuery,
-  useAddContactMutation,
-} from 'redux/contactsSwaggerApi';
+import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
 
-export const ContactsForm = ({ onClose, buttonText }) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+export const ContactsForm = ({
+  onClose,
+  buttonText,
+  id,
+  defaultName,
+  defaultNumber,
+  setApi,
+  isLoading,
+}) => {
+  const [name, setName] = useState(defaultName);
+  const [number, setNumber] = useState(defaultNumber);
   const { data } = useGetContactsQuery();
-  const [addItem, { isLoading }] = useAddContactMutation();
 
   const handleSubmit = async e => {
     e.preventDefault();
     const normalizedName = name.trim().toLowerCase();
+    const formData = { name, number };
 
     if (data.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
-      await addItem({ name: name.trim(), number: number });
+      const requestData = { id, ...formData };
+      await setApi(requestData);
       onClose();
     }
 
     reset();
   };
 
-  const handleInputNameChange = ({ target: { value } }) => setName(value);
-  const handleInputNumberChange = ({ target: { value } }) => setNumber(value);
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const reset = () => {
     setName('');
@@ -53,7 +70,7 @@ export const ContactsForm = ({ onClose, buttonText }) => {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            onChange={handleInputNameChange}
+            onChange={handleInputChange}
           />
         </Label>
         <Label>
@@ -65,7 +82,7 @@ export const ContactsForm = ({ onClose, buttonText }) => {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            onChange={handleInputNumberChange}
+            onChange={handleInputChange}
           />
         </Label>
         <Button type="submit">

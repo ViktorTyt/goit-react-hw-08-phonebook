@@ -13,25 +13,22 @@ import {
   useEditContactMutation,
 } from 'redux/contactsSwaggerApi';
 import { useState } from 'react';
-import { ModalEditContact } from 'components/Modals/ModalEditContact';
+import { ContactModal } from 'components/Modals/ContactModal';
 
 export const ContactListItem = ({ id, name, number }) => {
-  const [isEditModalShow, setIsEditModalShow] = useState(false);
-  const [deleteContact, { isLoading }] = useDeleteContactMutation();
-  // const [editContact] = useEditContactMutation();
+  const [isModalShow, setIsModalShow] = useState(false);
+  const [deleteContact, { isLoading: isDeleteLoading }] =
+    useDeleteContactMutation();
+  const [editContact, { isLoading }] = useEditContactMutation();
 
   const handleDeleteItem = async id => {
     await deleteContact(id);
   };
-  const handleModalOpen = () => setIsEditModalShow(true);
-  const handleModalClose = () => setIsEditModalShow(false);
-  // const edited = { name: 'Barbos', number: '777-25-65' };
-  const handleEditItem = id => {
-    // console.log(edited);
-    // console.log(id);
-    // const tosent = { id, ...edited };
-    // console.log(tosent);
-    // await editContact(tosent);
+
+  const handleModalOpen = () => setIsModalShow(true);
+  const handleModalClose = () => setIsModalShow(false);
+
+  const handleEditItem = () => {
     handleModalOpen();
   };
 
@@ -45,10 +42,10 @@ export const ContactListItem = ({ id, name, number }) => {
         <div>
           <DeleteButton
             type="button"
-            disabled={isLoading}
+            disabled={isDeleteLoading}
             onClick={() => handleDeleteItem(id)}
           >
-            {isLoading ? (
+            {isDeleteLoading ? (
               <ThreeDots
                 height="22"
                 width="22"
@@ -66,7 +63,7 @@ export const ContactListItem = ({ id, name, number }) => {
           <EditButton
             type="button"
             disabled={isLoading}
-            onClick={() => handleEditItem(id)}
+            onClick={handleEditItem}
           >
             {isLoading ? (
               <ThreeDots
@@ -85,10 +82,16 @@ export const ContactListItem = ({ id, name, number }) => {
           </EditButton>
         </div>
       </ContactItem>
-      {isEditModalShow && (
-        <ModalEditContact
-          isEditModalShow={isEditModalShow}
+      {isModalShow && (
+        <ContactModal
+          isModalShow={isModalShow}
           onClose={handleModalClose}
+          setApi={editContact}
+          isLoading={isLoading}
+          id={id}
+          defaultName={name}
+          defaultNumber={number}
+          textButton="save changes"
         />
       )}
     </>
