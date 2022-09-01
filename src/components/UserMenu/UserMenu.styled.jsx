@@ -29,4 +29,9 @@ export const Button = styled.button`
   padding: 4px;
   margin-left: 12px;
   border-radius: 4px;
+  transition: ${theme.animation.cubicBezierV2};
+
+  &:hover {
+    background-color: whitesmoke;
+  }
 `;

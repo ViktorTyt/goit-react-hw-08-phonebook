@@ -8,7 +8,7 @@ import {
 } from './ContactsForm.styled';
 import { useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
+import { useGetContactsQuery } from 'redux/contactsApi';
 
 export const ContactsForm = ({
   onClose,
@@ -31,8 +31,13 @@ export const ContactsForm = ({
     if (data.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
-      const requestData = { id, ...formData };
-      await setApi(requestData);
+      try {
+        const requestData = { id, ...formData };
+        await setApi(requestData);
+      } catch (error) {
+        console.log(error);
+      }
+
       onClose();
     }
 

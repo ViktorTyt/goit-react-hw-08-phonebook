@@ -1,12 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { REHYDRATE } from 'redux-persist';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: 'https://connections-api.herokuapp.com',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().users.token;
 
-    // If we have a token set in state, let's assume that we should be passing it.
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }
@@ -18,11 +16,6 @@ export const baseQuery = fetchBaseQuery({
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery,
-  // extractRehydrationInfo(action, { reducerPath }) {
-  //   if (action.type === REHYDRATE) {
-  //     return action.payload[reducerPath];
-  //   }
-  // },
   keepUnusedDataFor: 5,
   tagTypes: ['Users'],
   endpoints: builder => ({

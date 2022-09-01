@@ -1,7 +1,7 @@
 import { Wrapper, Label, Title, FilterInput } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterItem } from 'redux/filterSlice';
-import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
+import { useGetContactsQuery } from 'redux/contactsApi';
 
 export const Filter = () => {
   const dispatch = useDispatch();

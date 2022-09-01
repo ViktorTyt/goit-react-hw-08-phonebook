@@ -3,7 +3,7 @@ import { ContactListItem } from 'components/ContactsListItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { useGetContactsList } from 'hooks/useGetContactsList';
-import { useGetContactsQuery } from 'redux/contactsSwaggerApi';
+import { useGetContactsQuery } from 'redux/contactsApi';
 
 export const ContactList = ({ onShowModal }) => {
   const { isLoggedIn } = useSelector(state => state.users);

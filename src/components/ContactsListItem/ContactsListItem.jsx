@@ -11,7 +11,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import {
   useDeleteContactMutation,
   useEditContactMutation,
-} from 'redux/contactsSwaggerApi';
+} from 'redux/contactsApi';
 import { useState } from 'react';
 import { ContactModal } from 'components/Modals/ContactModal';
 

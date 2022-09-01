@@ -13,17 +13,7 @@ const initialState = {
 const userSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {
-    // loginSuccess: (state, { payload }) => {
-    //   state.name = payload.user.name;
-    //   state.email = payload.user.email;
-    //   state.token = payload.user.token;
-    // },
-    // getCurrentSuccess: (state, { payload }) => {
-    //   state.name = payload.name;
-    //   state.email = payload.email;
-    // },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addMatcher(

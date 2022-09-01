@@ -2,7 +2,7 @@ import { ContactList } from 'components/ContactsList';
 import { ContactModal } from 'components/Modals/ContactModal';
 import { Filter } from 'components/Filter';
 import { useState } from 'react';
-import { useAddContactMutation } from 'redux/contactsSwaggerApi';
+import { useAddContactMutation } from 'redux/contactsApi';
 
 const Contacts = () => {
   const [isModalShow, setIsModalShow] = useState(false);
