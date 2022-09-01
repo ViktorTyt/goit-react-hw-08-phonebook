@@ -3,8 +3,8 @@ import { useLoginMutation } from 'redux/userAPI';
 import { Button, Form, Label } from './Login.styled';
 
 const Login = () => {
-  const [email, setEmail] = useState('557711@gmail.com');
-  const [password, setPassword] = useState('qweqwe123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [login] = useLoginMutation();
 
   const handleInputChange = e => {

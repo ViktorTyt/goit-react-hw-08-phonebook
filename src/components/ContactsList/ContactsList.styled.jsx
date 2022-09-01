@@ -6,12 +6,7 @@ export const Title = styled.h2`
   color: ${theme.colors.dark};
 `;
 
-export const Message = styled.p`
-  position: fixed;
-  font-size: ${theme.fontSizes.medium};
-  font-weight: 500;
-  margin-bottom: 12px;
-`;
+export const Message = styled.h2``;
 
 export const List = styled.ul`
   display: flex;

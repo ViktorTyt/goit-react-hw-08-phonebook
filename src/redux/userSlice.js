@@ -7,6 +7,7 @@ const initialState = {
   email: '',
   token: '',
   isLoggedIn: false,
+  isRegistredIn: false,
   userContacts: [],
 };
 
