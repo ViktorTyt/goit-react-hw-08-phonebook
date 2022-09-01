@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Form,
   Label,
@@ -109,4 +110,14 @@ export const ContactsForm = ({
       </Form>
     </Container>
   );
+};
+
+ContactsForm.propTypes = {
+  onClose: PropTypes.func,
+  buttonText: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  defaultName: PropTypes.string.isRequired,
+  defaultNumber: PropTypes.string.isRequired,
+  setApi: PropTypes.func,
+  isLoading: PropTypes.bool,
 };

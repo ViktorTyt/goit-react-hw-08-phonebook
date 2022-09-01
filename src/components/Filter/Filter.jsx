@@ -18,7 +18,7 @@ export const Filter = () => {
 
   return (
     <>
-      {error && (
+      {error && error.status !== 401 && (
         <h2>
           {error.status} {JSON.stringify(error.data)}
         </h2>

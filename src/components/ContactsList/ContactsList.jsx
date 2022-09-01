@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { List, Button, Message } from './ContactsList.styled';
 import { ContactListItem } from 'components/ContactsListItem';
 import { Loader } from 'components/Loader';
@@ -19,7 +20,7 @@ export const ContactList = ({ onShowModal }) => {
 
   return (
     <>
-      {error && (
+      {error && error.status !== 401 && (
         <h2>
           {error.status} {JSON.stringify(error.data)}
         </h2>
@@ -43,4 +44,8 @@ export const ContactList = ({ onShowModal }) => {
       }
     </>
   );
+};
+
+ContactList.propTypes = {
+  onShowModal: PropTypes.func.isRequired,
 };

@@ -29,7 +29,6 @@ export const contactsApi = createApi({
     editContact: builder.mutation({
       query(data) {
         const { id, ...body } = data;
-        console.log(body);
         return {
           url: `/contacts/${id}`,
           method: 'PATCH',

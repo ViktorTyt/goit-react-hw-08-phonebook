@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { ContactsForm } from 'components/ContactsForm';
 import { Overlay, Modal } from './ContactModal.styled';
@@ -5,7 +6,7 @@ import { Overlay, Modal } from './ContactModal.styled';
 export const ContactModal = ({
   onClose,
   setApi,
-  id = null,
+  id = '',
   defaultName = '',
   defaultNumber = '',
   isLoading,
@@ -46,4 +47,14 @@ export const ContactModal = ({
       </Modal>
     </Overlay>
   );
+};
+
+ContactsForm.propTypes = {
+  onClose: PropTypes.func,
+  textButton: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  defaultName: PropTypes.string.isRequired,
+  defaultNumber: PropTypes.string.isRequired,
+  setApi: PropTypes.func,
+  isLoading: PropTypes.bool,
 };

@@ -4,6 +4,7 @@ import { AppBar } from 'components/AppBar';
 import { useCurrentUserQuery } from 'redux/userAPI';
 import { PrivateRoute, PublicRoute } from 'components/routes';
 import { Container, Section } from './App.styled';
+import { Loader } from 'components/Loader';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
@@ -14,13 +15,13 @@ export const App = () => {
   const { isFetching, error } = useCurrentUserQuery();
 
   return (
-    !isFetching && (
-      <>
-        <AppBar />
+    <>
+      <AppBar />
 
-        <Section>
-          <Container>
-            <Suspense fallback={<p>Loading...</p>}>
+      <Section>
+        <Container>
+          {!isFetching && (
+            <Suspense fallback={<Loader />}>
               <Routes>
                 <Route
                   path="/"
@@ -59,14 +60,15 @@ export const App = () => {
                 />
               </Routes>
             </Suspense>
-            {error && (
-              <h2>
-                {error.status} {JSON.stringify(error.data)}
-              </h2>
-            )}
-          </Container>
-        </Section>
-      </>
-    )
+          )}
+
+          {error && error.status !== 401 && (
+            <h2>
+              {error.status} {JSON.stringify(error.data)}
+            </h2>
+          )}
+        </Container>
+      </Section>
+    </>
   );
 };
