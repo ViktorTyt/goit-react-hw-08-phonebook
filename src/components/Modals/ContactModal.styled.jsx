@@ -19,7 +19,7 @@ export const Modal = styled.div`
     width: 290px;
     // padding: 40px;
     border-radius: 4px;
-    transform: translate(-50%, -100%) scale(1);
+    transform: translate(-50%, -75%) scale(1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 `;

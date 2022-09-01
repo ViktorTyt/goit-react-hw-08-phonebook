@@ -21,8 +21,9 @@ export const List = styled.ul`
 `;
 
 export const Button = styled.button`
-  width: 136px;
-  height: 40px;
+  position: fixed;
+  bottom: 32px;
+  right: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,15 +32,16 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  border-radius: 4px;
-  border: 2px solid ${theme.colors.dark};
+  border-radius: 50%;
   transition: background-color ${theme.animation.cubicBezierV2}
-
-
+  
   :hover {
     background-color: ${theme.colors.darkOpange};
   }
-  :active {
-    border: none;
+
+  @media screen and (min-width: 1024px) {
+    bottom: 56px;
+    right: 360px;
   }
+
 `;

@@ -1,6 +1,7 @@
 import { Wrapper, Title, UserWrapper, Button } from './UserMenu.styled';
 import { useSelector } from 'react-redux';
 import { useLogoutMutation } from 'redux/userAPI';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 export const Menu = () => {
   const { name } = useSelector(state => state.users);
@@ -21,7 +22,7 @@ export const Menu = () => {
         <Title>{name}</Title>
       </UserWrapper>
       <Button type="button" onClick={handleLogout}>
-        Logout
+        <RiLogoutCircleRLine size={36} />
       </Button>
     </Wrapper>
   );

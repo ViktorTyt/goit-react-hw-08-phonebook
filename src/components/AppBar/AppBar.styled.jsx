@@ -2,8 +2,11 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
 export const Header = styled.header`
+  position: fixed;
+  left: 0;
+  top: 0;
   display: flex;
-  width: auto;
+  width: 100%;
   background-color: ${theme.colors.accent};
   box-shadow: ${theme.shadows.small};
 `;

@@ -4,7 +4,7 @@ import { theme } from 'styles/theme';
 export const ContactItem = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
@@ -17,17 +17,24 @@ export const ContactItem = styled.li`
     margin-bottom: 16px;
   }
 `;
+
 export const ContactItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 8px;
 `;
+
 export const ItemName = styled.span``;
 export const ItemNumber = styled.span``;
 
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 export const DeleteButton = styled.button`
   width: 40px;
-  height: 24px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
@@ -35,7 +42,6 @@ export const DeleteButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: ${theme.colors.gray};
   transition: background-color ${theme.animation.cubicBezierV2};
 
   :hover {
@@ -45,7 +51,6 @@ export const DeleteButton = styled.button`
 
 export const EditButton = styled.button`
   width: 40px;
-  height: 24px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
@@ -53,7 +58,7 @@ export const EditButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: ${theme.colors.gray};
+
   transition: background-color ${theme.animation.cubicBezierV2};
 
   :hover {

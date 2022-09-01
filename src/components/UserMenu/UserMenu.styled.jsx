@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
-// import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -25,13 +24,17 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.colors.white};
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSizes.medium};
+  font-weight: 500;
+  text-transform: uppercase;
+  border: 2px solid transparent;
   padding: 4px;
   margin-left: 12px;
   border-radius: 4px;
   transition: ${theme.animation.cubicBezierV2};
 
   &:hover {
-    background-color: whitesmoke;
+    border: 2px solid ${theme.colors.white};
   }
 `;

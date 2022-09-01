@@ -14,4 +14,9 @@ export const Container = styled.div`
 export const Section = styled.section`
   display: flex;
   padding: 24px 0;
+  margin-top: 120px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 88px;
+  }
 `;

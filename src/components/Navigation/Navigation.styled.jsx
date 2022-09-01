@@ -18,6 +18,7 @@ export const Link = styled(NavLink)`
   text-transform: uppercase;
   color: white;
   font-weight: 500;
+  border: 2px solid transparent;
   transition: background-color ${theme.animation.cubicBezierV2};
 
   &:hover {

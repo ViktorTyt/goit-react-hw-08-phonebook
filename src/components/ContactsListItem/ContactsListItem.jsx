@@ -4,6 +4,7 @@ import {
   ContactItemWrapper,
   ItemName,
   ItemNumber,
+  ButtonsWrapper,
   DeleteButton,
   EditButton,
 } from './ContactsListItem.styled';
@@ -14,12 +15,14 @@ import {
 } from 'redux/contactsApi';
 import { useState } from 'react';
 import { ContactModal } from 'components/Modals/ContactModal';
+import { MdDeleteForever } from 'react-icons/md';
+import { AiTwotoneEdit } from 'react-icons/ai';
 
 export const ContactListItem = ({ id, name, number }) => {
   const [isModalShow, setIsModalShow] = useState(false);
   const [deleteContact, { isLoading: isDeleteLoading }] =
     useDeleteContactMutation();
-  const [editContact, { isLoading }] = useEditContactMutation();
+  const [editContact, { isLoading: isEditLoading }] = useEditContactMutation();
 
   const handleDeleteItem = async id => {
     await deleteContact(id);
@@ -39,7 +42,7 @@ export const ContactListItem = ({ id, name, number }) => {
           <ItemName>{name}</ItemName>
           <ItemNumber>tel: {number}</ItemNumber>
         </ContactItemWrapper>
-        <div>
+        <ButtonsWrapper>
           <DeleteButton
             type="button"
             disabled={isDeleteLoading}
@@ -57,15 +60,15 @@ export const ContactListItem = ({ id, name, number }) => {
                 visible={true}
               />
             ) : (
-              'Delete'
+              <MdDeleteForever size={20} />
             )}
           </DeleteButton>
           <EditButton
             type="button"
-            disabled={isLoading}
+            disabled={isEditLoading}
             onClick={handleEditItem}
           >
-            {isLoading ? (
+            {isEditLoading ? (
               <ThreeDots
                 height="22"
                 width="22"
@@ -77,17 +80,17 @@ export const ContactListItem = ({ id, name, number }) => {
                 visible={true}
               />
             ) : (
-              'Edit'
+              <AiTwotoneEdit size={20} />
             )}
           </EditButton>
-        </div>
+        </ButtonsWrapper>
       </ContactItem>
       {isModalShow && (
         <ContactModal
           isModalShow={isModalShow}
           onClose={handleModalClose}
           setApi={editContact}
-          isLoading={isLoading}
+          isLoading={isEditLoading}
           id={id}
           defaultName={name}
           defaultNumber={number}
