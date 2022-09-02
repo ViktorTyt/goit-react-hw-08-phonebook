@@ -22,14 +22,14 @@ export const ContactsForm = ({
 }) => {
   const [name, setName] = useState(defaultName);
   const [number, setNumber] = useState(defaultNumber);
-  const { data } = useGetContactsQuery();
+  const { data } = useGetContactsQuery(id, { skip: id });
 
   const handleSubmit = async e => {
     e.preventDefault();
     const normalizedName = name.trim().toLowerCase();
     const formData = { name, number };
 
-    if (data.find(({ name }) => name.toLowerCase() === normalizedName)) {
+    if (!id && data.find(({ name }) => name.toLowerCase() === normalizedName)) {
       alert(`${name} is already in contacts`);
     } else {
       try {
